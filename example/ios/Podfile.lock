@@ -26,11 +26,11 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/video_editor_sdk/ios"
 
 SPEC CHECKSUMS:
-  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   imgly_sdk: bb252939cfbf53a0199a40d565ab675db859a041
   imglyKit: 505785f0467867523cdee38ebb7d60c5189faedf
   video_editor_sdk: 2e8337c6604c6b5a8fc2f2b3f261a00da702b1b0
 
-PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+PODFILE CHECKSUM: ef19549a9bc3046e7bb7d2fab4d021637c0c58a3
 
-COCOAPODS: 1.10.2
+COCOAPODS: 1.11.2
