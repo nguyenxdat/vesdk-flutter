@@ -132,7 +132,7 @@ public class FlutterVESDK: FlutterIMGLY, FlutterPlugin, VideoEditViewControllerD
               case "imgly_icon_save":
                 return UIImage(systemName: "checkmark.circle.fill", withConfiguration: config)?.icon(pt: 44, alpha: 0.6)
               case "imgly_icon_delete_48pt":
-                let image = UIImage(systemName: "trash.fill", withConfiguration: config)?.withTintColor(UIColor.red)
+                let image = UIImage(systemName: "trash.fill", withConfiguration: config)?.withTintColor(UIColor.red, renderingMode: .alwaysOriginal)
                 return image
               default:
                 return nil
