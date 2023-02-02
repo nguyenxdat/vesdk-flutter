@@ -11,17 +11,29 @@ private extension UIImage {
     ///   - alpha: Icon alpha value.
     /// - Returns: A new icon image.
     func icon(pt: CGFloat, alpha: CGFloat = 1, imageColor: UIColor = UIColor.red) -> UIImage? {
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: pt, height: pt), false, scale)
-        // let position = CGPoint(x: (pt - size.width) / 2, y: (pt - size.height) / 2)
-        // draw(at: position, blendMode: .normal, alpha: alpha)
-        let drawRect = CGRect(x: (pt - size.width) / 2, y: (pt - size.height) / 2, width: size.width, height: size.height)
-        imageColor.setFill()
+        // UIGraphicsBeginImageContextWithOptions(CGSize(width: pt, height: pt), false, scale)
+        // // let position = CGPoint(x: (pt - size.width) / 2, y: (pt - size.height) / 2)
+        // // draw(at: position, blendMode: .normal, alpha: alpha)
+        // let drawRect = CGRect(x: (pt - size.width) / 2, y: (pt - size.height) / 2, width: size.width, height: size.height)
+        // imageColor.setFill()
+        // UIRectFill(drawRect)
+        // draw(in: drawRect, blendMode: .destinationIn, alpha: alpha)
+
+        // let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        // UIGraphicsEndImageContext()
+        // return newImage
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: pt, height: pt), false, scale)        
+        // 1
+        let drawRect = CGRect(x: 0,y: 0,width: size.width, height: size.height)        
+        // 2
+        imageColor.setFill()        
         UIRectFill(drawRect)
+        // 3
         draw(in: drawRect, blendMode: .destinationIn, alpha: alpha)
 
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        let tintedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return newImage
+        return tintedImage!
     }
 }
 
@@ -135,7 +147,7 @@ public class FlutterVESDK: FlutterIMGLY, FlutterPlugin, VideoEditViewControllerD
             IMGLY.bundleImageBlock = { imageName in
               switch imageName {
               case "imgly_icon_save":
-                return UIImage(systemName: "checkmark.circle.fill", withConfiguration: config)?.icon(pt: 44, alpha: 0.6)
+                return UIImage(systemName: "checkmark.circle.fill", withConfiguration: config)?.icon(pt: 44)
               case "imgly_icon_delete_48pt":
                 let image = UIImage(systemName: "trash.fill", withConfiguration: config)?.withTintColor(UIColor(red: 255/255, green: 74/255, blue: 114/255, alpha: 1))
                 return image
