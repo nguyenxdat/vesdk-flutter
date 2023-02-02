@@ -135,7 +135,9 @@ public class FlutterVESDK: FlutterIMGLY, FlutterPlugin, VideoEditViewControllerD
                 return UIImage(systemName: "checkmark.circle.fill", withConfiguration: config)?.icon(pt: 44, alpha: 0.6, backgroundColor: UIColor.yellow)
               case "imgly_icon_delete_48pt":
                 // return UIImage(systemName: "checkmark.circle.fill", withConfiguration: config)?.icon(pt: 44, alpha: 0.6, backgroundColor: UIColor.red)
-                return UIImage(named: imageName)?.withTintColor(UIColor.red, renderingMode: .alwaysOriginal)
+                let image = UIImage(named: imageName)?.withTintColor(UIColor.red, renderingMode: .alwaysOriginal)
+                print("new image = \(image)")
+                return image
               default:
                 return nil
               }
