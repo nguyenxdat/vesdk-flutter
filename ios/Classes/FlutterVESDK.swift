@@ -5,20 +5,19 @@ import imgly_sdk
 import AVFoundation
 
 private extension UIImage {
-  /// Create a new icon image for a specific size by centering the input image and optionally applying alpha blending.
-  /// - Parameters:
-  ///   - pt: Icon size in point (pt).
-  ///   - alpha: Icon alpha value.
-  /// - Returns: A new icon image.
-  func icon(pt: CGFloat, alpha: CGFloat = 1, backgroundColor: UIColor = UIColor.red) -> UIImage? {
-    UIGraphicsBeginImageContextWithOptions(CGSize(width: pt, height: pt), false, scale)
-    let position = CGPoint(x: (pt - size.width) / 2, y: (pt - size.height) / 2)
-    draw(at: position, blendMode: .normal, alpha: alpha)
-    backgroundColor.setFill()
-    let newImage = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
-    return newImage
-  }
+    /// Create a new icon image for a specific size by centering the input image and optionally applying alpha blending.
+    /// - Parameters:
+    ///   - pt: Icon size in point (pt).
+    ///   - alpha: Icon alpha value.
+    /// - Returns: A new icon image.
+    func icon(pt: CGFloat, alpha: CGFloat = 1, imageColor: UIColor = UIColor.white) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: pt, height: pt), false, scale)
+        let position = CGPoint(x: (pt - size.width) / 2, y: (pt - size.height) / 2)
+        draw(at: position, blendMode: .normal, alpha: alpha)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage?.withTintColor(imageColor, renderingMode: .alwaysOriginal)
+    }
 }
 
 @available(iOS 13.0, *)
@@ -129,13 +128,11 @@ public class FlutterVESDK: FlutterIMGLY, FlutterPlugin, VideoEditViewControllerD
 
             let config = UIImage.SymbolConfiguration(scale: .large)
             IMGLY.bundleImageBlock = { imageName in
-              print("imageName = \(imageName)")
               switch imageName {
               case "imgly_icon_save":
-                return UIImage(systemName: "checkmark.circle.fill", withConfiguration: config)?.icon(pt: 44, alpha: 0.6, backgroundColor: UIColor.yellow)
+                return UIImage(systemName: "checkmark.circle.fill", withConfiguration: config)?.icon(pt: 44, alpha: 0.6, imageColor: UIColor(red: 255/255, green: 74/255, blue: 114/255, alpha: 1))
               case "imgly_icon_delete_48pt":
-                // return UIImage(systemName: "checkmark.circle.fill", withConfiguration: config)?.icon(pt: 44, alpha: 0.6, backgroundColor: UIColor.red)
-                let image = UIImage(named: imageName)?.withTintColor(UIColor.red, renderingMode: .alwaysOriginal)
+                let image = UIImage(systemName: "trash.fill", withConfiguration: config)?.icon(pt: 44, alpha: 0.6, imageColor: UIColor(red: 255/255, green: 74/255, blue: 114/255, alpha: 1))
                 print("new image = \(image)")
                 return image
               default:
