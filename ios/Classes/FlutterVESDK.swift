@@ -16,7 +16,7 @@ private extension UIImage {
         draw(at: position, blendMode: .normal, alpha: alpha)
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return newImage?.withTintColor(imageColor, renderingMode: .alwaysOriginal)
+        return newImage?.withTintColor(imageColor)
     }
 }
 
@@ -133,7 +133,6 @@ public class FlutterVESDK: FlutterIMGLY, FlutterPlugin, VideoEditViewControllerD
                 return UIImage(systemName: "checkmark.circle.fill", withConfiguration: config)?.icon(pt: 44, alpha: 0.6, imageColor: UIColor(red: 255/255, green: 74/255, blue: 114/255, alpha: 1))
               case "imgly_icon_delete_48pt":
                 let image = UIImage(systemName: "trash.fill", withConfiguration: config)?.icon(pt: 44, alpha: 0.6, imageColor: UIColor(red: 255/255, green: 74/255, blue: 114/255, alpha: 1))
-                print("new image = \(image)")
                 return image
               default:
                 return nil
