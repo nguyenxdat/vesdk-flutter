@@ -11,7 +11,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  imgly_sdk: 3.0.0
+  imgly_sdk: 
+    git:
+      url: https://github.com/nguyenxdat/imgly-flutter
+      ref: 554ca26
 
 dev_dependencies:
   flutter_test:
