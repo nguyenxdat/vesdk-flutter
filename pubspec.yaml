@@ -14,7 +14,7 @@ dependencies:
   imgly_sdk: 
     git:
       url: https://github.com/nguyenxdat/imgly-flutter
-      ref: 554ca26
+      ref: 45abc30
 
 dev_dependencies:
   flutter_test:
